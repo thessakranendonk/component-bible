@@ -1,2 +1,2 @@
-export { default as Popup } from './Popup';
+export { default as AlertPopup } from './AlertPopup';
 export { default as SimpleButton } from './SimpleButton';
