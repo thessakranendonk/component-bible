@@ -14,7 +14,7 @@ const App = () => {
       {/* <PageHeader />
       <HeaderImageBar />
       <LogOut /> */}
-      <Popup key="index" title="test" position="bottom-right" variant="danger" />
+      {/* <Popup key="index" title="test" position="bottom-right" variant="danger" /> */}
       <SimpleButton text="test" />
 
       <main className="main-content">{/* <PageFooter /> */}</main>
