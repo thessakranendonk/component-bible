@@ -1,6 +1,6 @@
 {
   "name": "component-bible-library",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "dependencies": {
     "@headlessui/react": "^1.7.4",
