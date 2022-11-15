@@ -1,6 +1,6 @@
 {
   "name": "component-bible-library",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "dependencies": {
     "@headlessui/react": "^1.7.4",
@@ -54,10 +54,7 @@
     ]
   },
   "description": "TypeScript Tailwind Component Library",
-  "main": "lib/index.js",
-  "files": [
-    "lib/**/*"
-  ],
+  "main": "./index.js",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
