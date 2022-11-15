@@ -14,8 +14,9 @@ const App = () => {
       {/* <PageHeader />
       <HeaderImageBar />
       <LogOut /> */}
+      <Popup key="index" title="test" position="bottom-right" variant="danger" />
       <SimpleButton text="test" />
-      <Popup key="index" title="test" position="top-right" variant="danger" />
+
       <main className="main-content">{/* <PageFooter /> */}</main>
     </>
   );
