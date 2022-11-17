@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import SimpleHeader from './components/SimpleHeader';
 import { NavigationLink } from './components/SimpleHeader/SimpleHeader';
 import './index.css';
+const logo = require('../src/assets/gf-logo.png');
 
 const navigationLinks: Array<NavigationLink> = [
   { name: 'Listen', href: '/listen' },
@@ -19,11 +20,12 @@ const App = () => {
     <>
       <SimpleHeader
         headerTitle="Hello"
+        logo={logo}
         navigationLinks={navigationLinks}
-        bgColor="bg-white"
-        linkColor="text-pink-600"
-        hoverColor="hover:text-blue-400"
-        activeColor="text-green-600"
+        bgColor="bg-black border-b-8 border-green-400"
+        link="text-amber-600 text-lg"
+        hover="hover:text-yellow-400"
+        active="text-green-600 text-lg"
         activeLink={location.pathname}
       />
       <main className="main-content">

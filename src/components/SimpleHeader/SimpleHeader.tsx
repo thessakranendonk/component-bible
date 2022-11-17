@@ -13,9 +13,9 @@ export interface NavigationLink {
 export interface SimpleHeaderProps {
   navigationLinks: NavigationLink[];
   bgColor: string;
-  linkColor: string;
-  hoverColor: string;
-  activeColor: string;
+  link: string;
+  hover: string;
+  active: string;
   activeLink?: string;
   headerTitle?: string;
   logo?: string | undefined;
@@ -28,9 +28,9 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = ({
   navigationLinks,
   headerTitle,
   bgColor,
-  linkColor,
-  hoverColor,
-  activeColor,
+  link,
+  hover,
+  active,
   activeLink,
   logo,
   alt,
@@ -47,7 +47,7 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = ({
           </a>
           <div className="-my-2 -mr-2 md:hidden">
             <Popover.Button
-              className={`inline-flex items-center justify-center rounded-md ${bgColor} p-2 ${linkColor} ${hoverColor} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500`}
+              className={`inline-flex items-center justify-center rounded-md ${bgColor} p-2 ${link} ${hover} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500`}
             >
               <span className="sr-only">Open menu</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -59,11 +59,11 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = ({
                 key={item.name}
                 to={`/${item.name}/`}
                 className={clsx(
-                  activeLink?.includes(item.name) ? activeColor : linkColor,
+                  activeLink?.includes(item.name) ? active : link,
                   'block relative px-5 pt-1 pb-2',
                   'text-center leading-tight font-light text-xl',
                   'border-transparent border-2 bg-transparent hover:border-b-2s rounded-2xl',
-                  `text-base font-medium ${hoverColor}`,
+                  `text-base font-medium ${hover}`,
                 )}
                 onClick={onLinkClick}
               >
@@ -92,7 +92,7 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = ({
                   <div>{logo ? <img className="h-16 w-auto" src={logo} alt={alt} /> : headerTitle}</div>
                   <div className="-mr-2">
                     <Popover.Button
-                      className={`inline-flex items-center justify-center rounded-md bg-white p-2 ${linkColor} ${hoverColor} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500`}
+                      className={`inline-flex items-center justify-center rounded-md bg-white p-2 ${link} ${hover} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500`}
                     >
                       <span className="sr-only">Close menu</span>
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -108,11 +108,11 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = ({
                       key={item.name}
                       to={`/${item.name}/`}
                       className={clsx(
-                        activeLink?.includes(item.name) ? activeColor : linkColor,
+                        activeLink?.includes(item.name) ? active : link,
                         'block relative px-5 pt-1 pb-2',
                         'text-center leading-tight font-light text-xl',
                         'border-transparent border-2 bg-transparent hover:border-b-2s rounded-2xl',
-                        `text-base font-medium ${hoverColor}`,
+                        `text-base font-medium ${hover}`,
                       )}
                       onClick={onLinkClick}
                     >
