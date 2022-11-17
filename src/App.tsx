@@ -1,24 +1,32 @@
-// import { Route, Switch } from 'react-router-dom';
-
-import AlertPopup from './components/AlertPopup';
-import SimpleButton from './components/SimpleButton';
+// import AlertPopup from './components/AlertPopup';
+// import SimpleButton from './components/SimpleButton';
+import { useLocation } from 'react-router-dom';
+import SimpleHeader from './components/SimpleHeader';
+import { NavigationLink } from './components/SimpleHeader/SimpleHeader';
 import './index.css';
-// import PageFooter from './components/PageFooter/PageFooter';
-// import PageHeader from './components/PageHeader/PageHeader';
-// import HeaderImageBar from './components/HeaderImageBar/HeaderImageBar';
-// import LogOut from './components/LogOut/LogOut';
+
+const navigationLinks: Array<NavigationLink> = [
+  { name: 'Listen', href: '/listen' },
+  { name: 'Shows', href: '/shows' },
+  { name: 'Store', href: '/store' },
+  { name: 'About', href: '/about' },
+];
 
 const App = () => {
+  const location = useLocation();
+
   return (
     <>
-      {/* <PageHeader />
-      <HeaderImageBar />
-      <LogOut /> */}
-
-      <SimpleButton text="test" />
-
+      <SimpleHeader
+        headerTitle="Hello"
+        navigationLinks={navigationLinks}
+        bgColor="bg-white"
+        linkColor="text-pink-600"
+        hoverColor="hover:text-blue-400"
+        activeColor="text-green-600"
+        activeLink={location.pathname}
+      />
       <main className="main-content">
-        {/* <PageFooter /> */}
         {/* <AlertPopup
           alertVisible={true}
           key="index"
