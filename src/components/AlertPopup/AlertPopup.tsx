@@ -24,14 +24,7 @@ const AlertPopup: React.FC<AlertPopupProps> = ({
   closeable,
   alertVisible,
 }) => {
-  // const [alertVisible, setAlertVisible] = useState(true);
-
-  // const handleClose = () => setAlertVisible(false);
-
-  // if (closeable) setTimeout(handleClose, 7000);
-  console.log(variant_color);
   return (
-    // onClick event handler on the main div makes it possible to close the notification if a user clicks anywhere on the screen
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div className={alertVisible ? 'z-40 w-screen h-screen bg-black/20 absolute left-0 top-0' : ''} onClick={onClick}>
       <div className={`fixed z-50 max-w-lg flex justify-between rounded-lg shadow-md ${position}`}>
