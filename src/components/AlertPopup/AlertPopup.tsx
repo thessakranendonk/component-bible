@@ -1,6 +1,5 @@
 import React from 'react';
 import { CheckCircleIcon, ExclamationCircleIcon, ExclamationTriangleIcon, TimesIcon } from '@patternfly/react-icons';
-import clsx from 'clsx';
 
 export interface AlertPopupProps {
   position: string;
