@@ -14,7 +14,7 @@ export interface IconHeaderProps {
   linkClassName: string;
   hoverClassName: string;
   activeLinkClassName: string;
-  currentActiveLink?: string;
+  currentActiveLocation?: string;
   buttonBgColor?: string;
   buttonTextColor?: string;
   buttonBorderColor?: string;
@@ -22,7 +22,7 @@ export interface IconHeaderProps {
   logo?: string | undefined;
   logoClassName?: string;
   alt?: string;
-  onLinkClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+  onLinkClick?: () => void;
 }
 
 /**
@@ -60,18 +60,23 @@ const LogoLink: React.FC<
 const MenuLinks: React.FC<
   Pick<
     IconHeaderProps,
-    'navigationLinks' | 'currentActiveLink' | 'activeLinkClassName' | 'linkClassName' | 'hoverClassName' | 'onLinkClick'
+    | 'navigationLinks'
+    | 'currentActiveLocation'
+    | 'activeLinkClassName'
+    | 'linkClassName'
+    | 'hoverClassName'
+    | 'onLinkClick'
   >
-> = ({ navigationLinks, currentActiveLink, activeLinkClassName, hoverClassName, linkClassName, onLinkClick }) => {
+> = ({ navigationLinks, currentActiveLocation, activeLinkClassName, hoverClassName, linkClassName, onLinkClick }) => {
   return (
     <>
       {navigationLinks.map((item) => {
         return (
           <NavLink
             key={item.name}
-            to={`/${item.name}`}
+            to={item.href}
             className={clsx(
-              currentActiveLink?.includes(item.name) ? activeLinkClassName : linkClassName,
+              currentActiveLocation?.includes(item.href) ? activeLinkClassName : linkClassName,
               hoverClassName,
               'font-serif font-medium text-center lg:text-left',
               'flex flex-col mt-2',
@@ -100,7 +105,7 @@ const DesktopIconBar: React.FC<IconHeaderProps> = ({ headerTitle, iconNavBarItem
       <div className="flex">
         <div className="flex">
           {iconNavBarItems?.map((item) => (
-            <a href={item.iconLink} className="flex">
+            <a key={item.iconLink} href={item.iconLink} className="flex">
               <div className="w-14 h-14 ml-12 mr-3">{item.icon}</div>
               <div className="flex flex-col">
                 <p className="text-lg font-medium font-serif">{item.title}</p>
@@ -119,7 +124,7 @@ const DesktopNavBar: React.FC<IconHeaderProps> = ({
   linkClassName,
   activeLinkClassName,
   hoverClassName,
-  currentActiveLink,
+  currentActiveLocation,
 }) => {
   return (
     <div className="hidden space-x-12 lg:flex lg:flex-1 lg:justify-start lg:items-center">
@@ -128,7 +133,7 @@ const DesktopNavBar: React.FC<IconHeaderProps> = ({
         linkClassName={linkClassName}
         hoverClassName={hoverClassName}
         activeLinkClassName={activeLinkClassName}
-        currentActiveLink={currentActiveLink}
+        currentActiveLocation={currentActiveLocation}
       />
     </div>
   );
@@ -144,7 +149,7 @@ const MobileIconBar: React.FC<IconHeaderProps> = ({ iconNavBarItems, buttonBorde
       <Popover.Panel className={clsx('absolute right-0 top-20 z-10 w-fit -translate-x-3 transform', headerBgColor)}>
         <ul className={clsx(buttonBorderColor, 'border-2')}>
           {iconNavBarItems?.map((item) => (
-            <li className="border-b-2 border-gray-200 last:border-0">
+            <li key={item.iconLink} className="border-b-2 border-gray-200 last:border-0">
               <a
                 href={item.iconLink}
                 className={clsx(
@@ -178,16 +183,19 @@ const IconHeader: React.FC<IconHeaderProps> = ({
   linkClassName,
   hoverClassName,
   activeLinkClassName,
-  currentActiveLink,
+  currentActiveLocation,
   buttonBgColor,
   buttonBorderColor,
   buttonTextColor,
   logo,
   logoClassName,
   alt,
-  onLinkClick,
 }) => {
   const [showSideBar, setShowSideBar] = useState(false);
+
+  const closeMenuPanel = () => {
+    setShowSideBar(false);
+  };
   return (
     <header>
       <div>
@@ -233,12 +241,16 @@ const IconHeader: React.FC<IconHeaderProps> = ({
                                 ) : (
                                   <p>{headerTitle}</p>
                                 )}
-                                <MenuLinks
-                                  navigationLinks={navigationLinks}
-                                  linkClassName={linkClassName}
-                                  hoverClassName={hoverClassName}
-                                  activeLinkClassName={activeLinkClassName}
-                                />
+                                <div className="pt-10">
+                                  <MenuLinks
+                                    navigationLinks={navigationLinks}
+                                    linkClassName={linkClassName}
+                                    hoverClassName={hoverClassName}
+                                    activeLinkClassName={activeLinkClassName}
+                                    currentActiveLocation={currentActiveLocation}
+                                    onLinkClick={closeMenuPanel}
+                                  />
+                                </div>
                               </div>
                             </div>
                           </Dialog.Panel>
@@ -325,6 +337,7 @@ const IconHeader: React.FC<IconHeaderProps> = ({
             activeLinkClassName={activeLinkClassName}
             linkClassName={linkClassName}
             hoverClassName={hoverClassName}
+            currentActiveLocation={currentActiveLocation}
           />
         </nav>
       </div>
