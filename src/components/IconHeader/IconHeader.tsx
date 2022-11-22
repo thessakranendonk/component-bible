@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import { Dialog, Menu, Popover, Transition } from '@headlessui/react';
+import { Dialog, Popover, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { NavLink } from 'react-router-dom';
 import { NavigationLink } from '../SimpleHeader/SimpleHeader';
 import { IconNavBarProps } from '../../App';
@@ -37,7 +36,6 @@ const LogoLink: React.FC<
 > = ({ onLinkClick, logo, alt, logoClassName, showSideBar }) => {
   return (
     <>
-      {/* {!showSideBar && ( */}
       <NavLink
         to="/"
         className={clsx(
@@ -49,7 +47,6 @@ const LogoLink: React.FC<
       >
         <img className={logoClassName} src={logo} alt={alt} />
       </NavLink>
-      {/* )} */}
     </>
   );
 };
@@ -93,18 +90,7 @@ const MenuLinks: React.FC<
  * Horizontal navigation bar for Desktop that's hidden via CSS media query for viewport widths below the
  * tailwind `lg` breakpoint.
  */
-const DesktopIconBar: React.FC<IconHeaderProps> = ({
-  navigationLinks,
-  headerBgColor,
-  headerTitle,
-  alt,
-  logo,
-  iconNavBarItems,
-  linkClassName,
-  activeLinkClassName,
-  hoverClassName,
-  currentActiveLink,
-}) => {
+const DesktopIconBar: React.FC<IconHeaderProps> = ({ headerTitle, iconNavBarItems }) => {
   return (
     <div className="py-6 px-8">
       <a className="flex justify-start flex-1" href="/">
@@ -176,55 +162,6 @@ const MobileIconBar: React.FC<IconHeaderProps> = ({ iconNavBarItems, buttonBorde
           ))}
         </ul>
       </Popover.Panel>
-    </div>
-  );
-};
-
-/**
- * Mobile navigation menu body, intended for rendering as a child of a HeadlessUI `Popover.Panel`.
- *
- * @todo add aria-current for current page + current page styling see e.g. https://tailwindui.com/components/application-ui/navigation/navbars "With Search in Column Layout"
- */
-const MobileNavMenu: React.FC<
-  IconHeaderProps & {
-    isMenuOpen?: boolean;
-    onMenuItemClick?: () => void;
-  }
-> = ({
-  navigationLinks,
-  headerBgColor,
-  linkClassName,
-  hoverClassName,
-  activeLinkClassName,
-  isMenuOpen,
-  onMenuItemClick,
-}) => {
-  return (
-    <div
-      className={clsx(
-        headerBgColor,
-        // `absolute z-30 w-fit p-4 transition shadow-lg ring-1 ring-black/20 ring-opacity-5 overflow-hidden`,
-      )}
-    >
-      <div className="px-5 pt-4 flex items-center justify-between">
-        <Menu.Button
-          className={clsx(
-            'p-2 inline-flex',
-            `${linkClassName}, ${hoverClassName}`,
-            'focus:outline-none focus-visible:ring focus-visible:ring-inset focus-visible:ring-black',
-          )}
-        ></Menu.Button>
-      </div>
-      <div className="pt-5 pb-6">
-        <div className="space-y-2">
-          <MenuLinks
-            navigationLinks={navigationLinks}
-            linkClassName={linkClassName}
-            hoverClassName={hoverClassName}
-            activeLinkClassName={activeLinkClassName}
-          />
-        </div>
-      </div>
     </div>
   );
 };
@@ -375,8 +312,6 @@ const IconHeader: React.FC<IconHeaderProps> = ({
                       hoverClassName={hoverClassName}
                       activeLinkClassName={activeLinkClassName}
                       buttonBorderColor={buttonBorderColor}
-                      // isMenuOpen={open}
-                      // onMenuItemClick={close}
                     />
                   </Popover.Panel>
                 </Transition>
@@ -398,28 +333,3 @@ const IconHeader: React.FC<IconHeaderProps> = ({
 };
 
 export default IconHeader;
-
-//   <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-//     <div className="px-4 sm:px-6">
-//       {logo ? <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} /> : <p>{headerTitle}</p>}
-//     </div>
-//     <div className="relative mt-6 flex-1 px-4 sm:px-6">
-//       <div className="">
-//         {/* <MobileNavMenu
-//                         iconNavBarItems={iconNavBarItems}
-//                         headerBgColor={headerBgColor}
-//                         navigationLinks={navigationLinks}
-//                         linkClassName={linkClassName}
-//                         hoverClassName={hoverClassName}
-//                         activeLinkClassName={activeLinkClassName}
-//                       /> */}
-
-//                       <MenuLinks
-//                       navigationLinks={navigationLinks}
-//                       linkClassName={linkClassName}
-//                       hoverClassName={hoverClassName}
-//                       activeLinkClassName={activeLinkClassName}
-//                     />
-//                   </div>
-//                 </div>
-//               </div>
