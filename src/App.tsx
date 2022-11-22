@@ -1,32 +1,66 @@
 // import AlertPopup from './components/AlertPopup';
 // import SimpleButton from './components/SimpleButton';
 import { useLocation } from 'react-router-dom';
-import SimpleHeader from './components/SimpleHeader';
+import IconHeader from './components/IconHeader';
+import { PhoneIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { NavigationLink } from './components/SimpleHeader/SimpleHeader';
 import './index.css';
-const logo = require('../src/assets/gf-logo.png');
+const logo = require('../src/assets/runnymede.png');
+
+export interface IconNavBarProps {
+  icon: any;
+  iconLink: string;
+  title: string;
+  undertext: string;
+}
+
+const iconNavBarItems: Array<IconNavBarProps> = [
+  {
+    icon: <ClockIcon className="text-red-900" />,
+    iconLink: '/clock',
+    title: 'Monday - Friday',
+    undertext: '8am to 5pm',
+  },
+  {
+    icon: <PhoneIcon className="text-red-900" />,
+    iconLink: '/call',
+    title: '519-861-4813',
+    undertext: 'Give us a Call',
+  },
+  {
+    icon: <MapPinIcon className="text-red-900" />,
+    iconLink: '/location',
+    title: 'Bloor West Village',
+    undertext: 'Toronto, Ontario',
+  },
+];
 
 const navigationLinks: Array<NavigationLink> = [
-  { name: 'Listen', href: '/listen' },
-  { name: 'Shows', href: '/shows' },
-  { name: 'Store', href: '/store' },
   { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Hours & Location', href: '/hours' },
+  { name: 'Our Policy', href: '/policy' },
 ];
 
 const App = () => {
   const location = useLocation();
-
+  console.log(location.pathname);
   return (
     <>
-      <SimpleHeader
+      <IconHeader
         headerTitle="Hello"
         logo={logo}
         navigationLinks={navigationLinks}
-        bgColor="bg-black border-b-8 border-green-400"
-        link="text-amber-600 text-lg"
-        hover="hover:text-yellow-400"
-        active="text-green-600 text-lg"
-        activeLink={location.pathname}
+        iconNavBarItems={iconNavBarItems}
+        headerBgColor="bg-white"
+        buttonBgColor="bg-red-900"
+        buttonBorderColor="border-red-900"
+        buttonTextColor="text-red-900"
+        linkClassName="text-black text-md font-normal"
+        logoClassName="h-20 mt-6 pl-8 lg:h-24 lg:pl-32 lg:mt-4"
+        hoverClassName="hover:text-yellow-400"
+        activeLinkClassName="text-red-900"
+        currentActiveLocation={location.pathname}
       />
       <main className="main-content">
         {/* <AlertPopup
