@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Dialog, Popover, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
@@ -31,9 +31,9 @@ export interface IconHeaderProps {
 const LogoLink: React.FC<
   Pick<IconHeaderProps, 'onLinkClick' | 'headerTitle' | 'logo' | 'alt'> & {
     logoClassName?: string;
-    showSideBar?: boolean;
+    showSidePanel?: boolean;
   }
-> = ({ onLinkClick, logo, alt, logoClassName, showSideBar }) => {
+> = ({ onLinkClick, logo, alt, logoClassName, showSidePanel }) => {
   return (
     <>
       <NavLink
@@ -41,7 +41,7 @@ const LogoLink: React.FC<
         className={clsx(
           'flex mx-auto lg:inline-block w-fit relative',
           'focus:outline-none focus-visible:ring focus-visible:ring-black/20 focus-visible:border-transparent',
-          !showSideBar ? '' : 'transition-opacity duration-300 opacity-0',
+          !showSidePanel ? '' : 'transition-opacity duration-300 opacity-0',
         )}
         onClick={onLinkClick}
       >
@@ -175,7 +175,9 @@ const MobileIconBar: React.FC<IconHeaderProps> = ({ iconNavBarItems, buttonBorde
  * Header of ProjectLayout that displays branding and implements a responsive navigation menu
  * that leverages HeadlessUI's `Popover` component.
  */
-const IconHeader: React.FC<IconHeaderProps> = ({
+const IconHeader: React.FC<
+  IconHeaderProps & { onMenuOpen: () => void; onMenuClose: () => void; isPanelOpen: boolean }
+> = ({
   navigationLinks,
   iconNavBarItems,
   headerTitle,
@@ -190,25 +192,28 @@ const IconHeader: React.FC<IconHeaderProps> = ({
   logo,
   logoClassName,
   alt,
+  onMenuClose,
+  onMenuOpen,
+  isPanelOpen,
 }) => {
-  const [showSideBar, setShowSideBar] = useState(false);
+  //   const [showSidePanel, setShowSidePanel] = useState(false);
 
-  const closeMenuPanel = () => {
-    setShowSideBar(false);
-  };
+  //   const closeMenuPanel = () => {
+  //     setShowSidePanel(false);
+  //   };
   return (
     <header>
       <div>
         <div className="flex justify-between lg:pb-2 lg:border-b-2 lg:border-gray-200/90">
           <div className="flex">
             <div className="flex items-center lg:hidden">
-              {!showSideBar && (
-                <button className="w-12 left-0 top-0" onClick={() => setShowSideBar(!showSideBar)}>
-                  <HamburgerButton isOpen={showSideBar} />
+              {!isPanelOpen && (
+                <button className="w-12 left-0 top-0" onClick={onMenuOpen}>
+                  <HamburgerButton isOpen={isPanelOpen} />
                 </button>
               )}
-              <Transition.Root show={showSideBar} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={setShowSideBar}>
+              <Transition.Root show={isPanelOpen} as={Fragment}>
+                <Dialog as="div" className="relative z-10" onClose={onMenuClose}>
                   <div className="fixed inset-0" />
                   <div className="fixed inset-0 overflow-hidden">
                     <div className="absolute inset-0 overflow-hidden">
@@ -227,9 +232,9 @@ const IconHeader: React.FC<IconHeaderProps> = ({
                               <div className="px-4 sm:px-6">
                                 <div className="flex items-start justify-between">
                                   <div className="absolute top-0 right-0 -mr-16 flex pt-4 pr-2 sm:-ml-10 sm:pr-4">
-                                    {showSideBar && (
-                                      <button className={clsx(hoverClassName)} onClick={() => setShowSideBar(false)}>
-                                        <HamburgerButton isOpen={showSideBar} />
+                                    {isPanelOpen && (
+                                      <button className={clsx(hoverClassName)} onClick={() => onMenuClose()}>
+                                        <HamburgerButton isOpen={isPanelOpen} />
                                       </button>
                                     )}
                                   </div>
@@ -248,7 +253,7 @@ const IconHeader: React.FC<IconHeaderProps> = ({
                                     hoverClassName={hoverClassName}
                                     activeLinkClassName={activeLinkClassName}
                                     currentActiveLocation={currentActiveLocation}
-                                    onLinkClick={closeMenuPanel}
+                                    // onLinkClick={onMenuClose}
                                   />
                                 </div>
                               </div>
@@ -262,7 +267,7 @@ const IconHeader: React.FC<IconHeaderProps> = ({
               </Transition.Root>
             </div>
             {logo ? (
-              <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} showSideBar={showSideBar} />
+              <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} showSidePanel={isPanelOpen} />
             ) : (
               <p>{headerTitle}</p>
             )}
