@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Dialog, Popover, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { NavLink } from 'react-router-dom';
 import { NavigationLink } from '../SimpleHeader/SimpleHeader';
 import { IconNavBarProps } from '../../App';
 import { ChevronUpIcon, ChevronDownIcon } from '@patternfly/react-icons';
@@ -36,8 +35,8 @@ const LogoLink: React.FC<
 > = ({ onLinkClick, logo, alt, logoClassName, showSidePanel }) => {
   return (
     <>
-      <NavLink
-        to="/"
+      <a
+        href="/"
         className={clsx(
           'flex mx-auto lg:inline-block w-fit relative',
           'focus:outline-none focus-visible:ring focus-visible:ring-black/20 focus-visible:border-transparent',
@@ -46,7 +45,7 @@ const LogoLink: React.FC<
         onClick={onLinkClick}
       >
         <img className={logoClassName} src={logo} alt={alt} />
-      </NavLink>
+      </a>
     </>
   );
 };
@@ -72,9 +71,9 @@ const MenuLinks: React.FC<
     <>
       {navigationLinks.map((item) => {
         return (
-          <NavLink
+          <a
             key={item.name}
-            to={item.href}
+            href={item.href}
             className={clsx(
               currentActiveLocation?.includes(item.href) ? activeLinkClassName : linkClassName,
               hoverClassName,
@@ -84,7 +83,7 @@ const MenuLinks: React.FC<
             onClick={onLinkClick}
           >
             {item.name}
-          </NavLink>
+          </a>
         );
       })}
     </>
