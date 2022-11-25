@@ -1,17 +1,6 @@
 import React from 'react';
 import { CheckCircleIcon, ExclamationCircleIcon, ExclamationTriangleIcon, TimesIcon } from '@patternfly/react-icons';
-
-export interface AlertPopupProps {
-  position: string;
-  variant: string;
-  variant_color: string;
-  icon_color: string;
-  text_color: string;
-  title: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-  alertVisible: boolean;
-  closeable?: boolean;
-}
+import { AlertPopupProps } from '../types/interfaces.types';
 
 const AlertPopup: React.FC<AlertPopupProps> = ({
   position,

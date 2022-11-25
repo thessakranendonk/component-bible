@@ -1,28 +1,9 @@
 import React, { Fragment } from 'react';
 import { Dialog, Popover, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { NavigationLink } from '../SimpleHeader/SimpleHeader';
-import { IconNavBarProps } from '../../App';
 import { ChevronUpIcon, ChevronDownIcon } from '@patternfly/react-icons';
 import { HamburgerButton } from '../UI/Buttons/HamburgerButton/HamburgerButton';
-
-export interface IconHeaderProps {
-  navigationLinks: NavigationLink[];
-  iconNavBarItems?: IconNavBarProps[];
-  headerBgColor?: string;
-  linkClassName: string;
-  hoverClassName: string;
-  activeLinkClassName: string;
-  currentActiveLocation?: string;
-  buttonBgColor?: string;
-  buttonTextColor?: string;
-  buttonBorderColor?: string;
-  headerTitle?: string;
-  logo?: string | undefined;
-  logoClassName?: string;
-  alt?: string;
-  onLinkClick?: () => void;
-}
+import { IconHeaderProps } from '../types/interfaces.types';
 
 /**
  * Header logo link pointing to the home ('/') route.
@@ -78,7 +59,7 @@ const MenuLinks: React.FC<
               currentActiveLocation?.includes(item.href) ? activeLinkClassName : linkClassName,
               hoverClassName,
               'font-serif font-medium text-center lg:text-left',
-              'flex flex-col mt-2',
+              'flex flex-col',
             )}
             onClick={onLinkClick}
           >
@@ -102,17 +83,15 @@ const DesktopIconBar: React.FC<IconHeaderProps> = ({ headerTitle, iconNavBarItem
       </a>
 
       <div className="flex">
-        <div className="flex">
-          {iconNavBarItems?.map((item) => (
-            <a key={item.iconLink} href={item.iconLink} className="flex">
-              <div className="w-14 h-14 ml-12 mr-3">{item.icon}</div>
-              <div className="flex flex-col">
-                <p className="text-lg font-medium font-serif">{item.title}</p>
-                <p className="text-md font-serif text-gray-400">{item.undertext}</p>
-              </div>
-            </a>
-          ))}
-        </div>
+        {iconNavBarItems?.map((item) => (
+          <a key={item.iconLink} href={item.iconLink} className="flex">
+            <div className="w-14 h-14 ml-12 mr-3">{item.icon}</div>
+            <div className="flex flex-col">
+              <p className="text-lg font-medium font-serif">{item.title}</p>
+              <p className="text-md font-serif text-gray-400">{item.undertext}</p>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
@@ -195,11 +174,6 @@ const IconHeader: React.FC<
   onMenuOpen,
   isPanelOpen,
 }) => {
-  //   const [showSidePanel, setShowSidePanel] = useState(false);
-
-  //   const closeMenuPanel = () => {
-  //     setShowSidePanel(false);
-  //   };
   return (
     <header>
       <div>
@@ -272,7 +246,7 @@ const IconHeader: React.FC<
             )}
           </div>
           <Popover className={clsx(headerBgColor, 'flex items-center justify-between')}>
-            {({ open, close }) => (
+            {({ open }) => (
               <>
                 <div>
                   <div>
@@ -335,7 +309,7 @@ const IconHeader: React.FC<
             )}
           </Popover>
         </div>
-        <nav className="hidden lg:inline-flex w-screen pl-32 justify-start py-5 border-b-2 border-gray-200/90">
+        <nav className="hidden lg:inline-flex w-screen pl-32 justify-start py-3 border-b-2 border-gray-200/90">
           <DesktopNavBar
             navigationLinks={navigationLinks}
             activeLinkClassName={activeLinkClassName}
