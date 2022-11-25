@@ -31,7 +31,7 @@ const HeroOne: React.FC<HeroOneProps> = ({
               <div className="absolute inset-0" />
             </div>
             <div className="relative px-8 py-16 lg:py-28 lg:pt-20 lg:px-32">
-              <h1 className="">
+              <h1>
                 <span className={clsx('block', locationClassName)}>{location}</span>
                 <span className={clsx('block', companyNameClassName)}>{companyName}</span>
               </h1>
