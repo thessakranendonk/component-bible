@@ -1,3 +1,3 @@
 export { default as AlertPopup } from './AlertPopup';
-export { default as SimpleButton } from './SimpleButton';
+export { default as HeroOne } from './HeroOne';
 export { default as IconHeader } from './IconHeader';
