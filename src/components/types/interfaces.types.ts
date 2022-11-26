@@ -16,6 +16,7 @@ export interface IconHeaderProps {
   buttonBgColor?: string;
   buttonTextColor?: string;
   buttonBorderColor?: string;
+  textClassName?: string;
   headerTitle?: string;
   logo?: string | undefined;
   logoClassName?: string;
@@ -45,6 +46,11 @@ export interface HeroOneProps {
   contactButtonText?: string;
   contactButtonClassName?: string;
   buttonLink?: string;
+}
+
+export interface HeroInfoBarProps {
+  heroImageRowItemsClassName?: string;
+  heroImageBarItems: string[];
 }
 
 // ALERTS, POPUP'S, MODAL'S

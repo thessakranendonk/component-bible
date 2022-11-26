@@ -46,8 +46,17 @@ const MenuLinks: React.FC<
     | 'linkClassName'
     | 'hoverClassName'
     | 'onLinkClick'
+    | 'textClassName'
   >
-> = ({ navigationLinks, currentActiveLocation, activeLinkClassName, hoverClassName, linkClassName, onLinkClick }) => {
+> = ({
+  navigationLinks,
+  currentActiveLocation,
+  activeLinkClassName,
+  textClassName,
+  hoverClassName,
+  linkClassName,
+  onLinkClick,
+}) => {
   return (
     <>
       {navigationLinks.map((item) => {
@@ -58,8 +67,9 @@ const MenuLinks: React.FC<
             className={clsx(
               currentActiveLocation?.includes(item.href) ? activeLinkClassName : linkClassName,
               hoverClassName,
-              'font-serif font-medium text-center lg:text-left',
-              'flex flex-col',
+              textClassName,
+              'font-medium text-center lg:text-left',
+              'flex flex-col mt-2',
             )}
             onClick={onLinkClick}
           >
@@ -75,7 +85,7 @@ const MenuLinks: React.FC<
  * Horizontal navigation bar for Desktop that's hidden via CSS media query for viewport widths below the
  * tailwind `lg` breakpoint.
  */
-const DesktopIconBar: React.FC<IconHeaderProps> = ({ headerTitle, iconNavBarItems }) => {
+const DesktopIconBar: React.FC<IconHeaderProps> = ({ headerTitle, iconNavBarItems, textClassName }) => {
   return (
     <div className="py-6 px-8">
       <a className="flex justify-start flex-1" href="/">
@@ -83,15 +93,17 @@ const DesktopIconBar: React.FC<IconHeaderProps> = ({ headerTitle, iconNavBarItem
       </a>
 
       <div className="flex">
-        {iconNavBarItems?.map((item) => (
-          <a key={item.iconLink} href={item.iconLink} className="flex">
-            <div className="w-14 h-14 ml-12 mr-3">{item.icon}</div>
-            <div className="flex flex-col">
-              <p className="text-lg font-medium font-serif">{item.title}</p>
-              <p className="text-md font-serif text-gray-400">{item.undertext}</p>
-            </div>
-          </a>
-        ))}
+        <div className="flex">
+          {iconNavBarItems?.map((item) => (
+            <a key={item.iconLink} href={item.iconLink} className="flex">
+              <div className="w-14 h-14 ml-12 mr-3">{item.icon}</div>
+              <div className="flex flex-col">
+                <p className={clsx('text-lg font-medium', textClassName)}>{item.title}</p>
+                <p className={clsx('text-md text-gray-400', textClassName)}>{item.undertext}</p>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -121,7 +133,12 @@ const DesktopNavBar: React.FC<IconHeaderProps> = ({
  * Horizontal navigation bar for Desktop that's hidden via CSS media query for viewport widths below the
  * tailwind `lg` breakpoint.
  */
-const MobileIconBar: React.FC<IconHeaderProps> = ({ iconNavBarItems, buttonBorderColor, headerBgColor }) => {
+const MobileIconBar: React.FC<IconHeaderProps> = ({
+  iconNavBarItems,
+  buttonBorderColor,
+  headerBgColor,
+  textClassName,
+}) => {
   return (
     <div>
       <Popover.Panel className={clsx('absolute right-0 top-20 z-10 w-fit -translate-x-3 transform', headerBgColor)}>
@@ -137,8 +154,8 @@ const MobileIconBar: React.FC<IconHeaderProps> = ({ iconNavBarItems, buttonBorde
               >
                 <div className="w-14 h-14 mr-4">{item.icon}</div>
                 <div className="flex flex-col">
-                  <p className="text-lg font-medium font-serif">{item.title}</p>
-                  <p className="text-md font-serif text-gray-400">{item.undertext}</p>
+                  <p className={clsx('text-lg font-medium', textClassName)}>{item.title}</p>
+                  <p className={clsx('text-md text-gray-400', textClassName)}>{item.undertext}</p>
                 </div>
               </a>
             </li>
@@ -226,7 +243,6 @@ const IconHeader: React.FC<
                                     hoverClassName={hoverClassName}
                                     activeLinkClassName={activeLinkClassName}
                                     currentActiveLocation={currentActiveLocation}
-                                    // onLinkClick={onMenuClose}
                                   />
                                 </div>
                               </div>
@@ -246,7 +262,7 @@ const IconHeader: React.FC<
             )}
           </div>
           <Popover className={clsx(headerBgColor, 'flex items-center justify-between')}>
-            {({ open }) => (
+            {({ open, close }) => (
               <>
                 <div>
                   <div>
@@ -309,7 +325,7 @@ const IconHeader: React.FC<
             )}
           </Popover>
         </div>
-        <nav className="hidden lg:inline-flex w-screen pl-32 justify-start py-3 border-b-2 border-gray-200/90">
+        <nav className="hidden lg:inline-flex w-screen pl-32 justify-start py-5 border-b-2 border-gray-200/90">
           <DesktopNavBar
             navigationLinks={navigationLinks}
             activeLinkClassName={activeLinkClassName}
