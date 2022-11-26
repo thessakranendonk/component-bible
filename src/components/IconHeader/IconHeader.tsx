@@ -9,7 +9,7 @@ import { IconHeaderProps } from '../types/interfaces.types';
  * Header logo link pointing to the home ('/') route.
  */
 const LogoLink: React.FC<
-  Pick<IconHeaderProps, 'onLinkClick' | 'headerTitle' | 'logo' | 'alt'> & {
+  Pick<IconHeaderProps, 'onLinkClick' | 'companyName' | 'logo' | 'alt'> & {
     logoClassName?: string;
     showSidePanel?: boolean;
   }
@@ -85,11 +85,11 @@ const MenuLinks: React.FC<
  * Horizontal navigation bar for Desktop that's hidden via CSS media query for viewport widths below the
  * tailwind `lg` breakpoint.
  */
-const DesktopIconBar: React.FC<IconHeaderProps> = ({ headerTitle, iconNavBarItems, textClassName }) => {
+const DesktopIconBar: React.FC<IconHeaderProps> = ({ companyName, iconNavBarItems, textClassName }) => {
   return (
     <div className="py-6 px-8">
       <a className="flex justify-start flex-1" href="/">
-        <span className="sr-only">{headerTitle}</span>
+        <span className="sr-only">{companyName}</span>
       </a>
 
       <div className="flex">
@@ -135,14 +135,14 @@ const DesktopNavBar: React.FC<IconHeaderProps> = ({
  */
 const MobileIconBar: React.FC<IconHeaderProps> = ({
   iconNavBarItems,
-  buttonBorderColor,
+  dropdownBorderColor,
   headerBgColor,
   textClassName,
 }) => {
   return (
     <div>
       <Popover.Panel className={clsx('absolute right-0 top-20 z-10 w-fit -translate-x-3 transform', headerBgColor)}>
-        <ul className={clsx(buttonBorderColor, 'border-2')}>
+        <ul className={clsx(dropdownBorderColor, 'border-2')}>
           {iconNavBarItems?.map((item) => (
             <li key={item.iconLink} className="border-b-2 border-gray-200 last:border-0">
               <a
@@ -175,15 +175,16 @@ const IconHeader: React.FC<
 > = ({
   navigationLinks,
   iconNavBarItems,
-  headerTitle,
+  companyName,
   headerBgColor,
   linkClassName,
   hoverClassName,
   activeLinkClassName,
   currentActiveLocation,
-  buttonBgColor,
-  buttonBorderColor,
-  buttonTextColor,
+  dropdownBgColor,
+  dropdownBorderColor,
+  dropdownTextColor,
+  textClassName,
   logo,
   logoClassName,
   alt,
@@ -234,7 +235,7 @@ const IconHeader: React.FC<
                                 {logo ? (
                                   <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} />
                                 ) : (
-                                  <p>{headerTitle}</p>
+                                  <p>{companyName}</p>
                                 )}
                                 <div className="pt-10">
                                   <MenuLinks
@@ -258,7 +259,7 @@ const IconHeader: React.FC<
             {logo ? (
               <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} showSidePanel={isPanelOpen} />
             ) : (
-              <p>{headerTitle}</p>
+              <p>{companyName}</p>
             )}
           </div>
           <Popover className={clsx(headerBgColor, 'flex items-center justify-between')}>
@@ -270,15 +271,15 @@ const IconHeader: React.FC<
                       className={clsx(
                         'flex lg:hidden items-center justify-center p-2.5 mr-3',
                         'focus:outline-none focus:ring-1 focus-ring-inset focus:ring-black-100',
-                        `border-2 ${buttonBorderColor}`,
-                        open ? buttonBgColor : 'bg-white',
+                        `border-2 ${dropdownBorderColor}`,
+                        open ? dropdownBgColor : 'bg-white',
                       )}
                     >
                       <span className="sr-only">'open-navigation-menu'</span>
                       {open ? (
                         <ChevronUpIcon className="text-white h-4 w-4" />
                       ) : (
-                        <ChevronDownIcon className={clsx(buttonTextColor, 'h-4 w-4')} />
+                        <ChevronDownIcon className={clsx(dropdownTextColor, 'h-4 w-4')} />
                       )}
                     </Popover.Button>
                   </div>
@@ -290,6 +291,7 @@ const IconHeader: React.FC<
                       activeLinkClassName={activeLinkClassName}
                       linkClassName={linkClassName}
                       hoverClassName={hoverClassName}
+                      textClassName={textClassName}
                     />
                   </div>
                 </div>
@@ -317,7 +319,7 @@ const IconHeader: React.FC<
                       linkClassName={linkClassName}
                       hoverClassName={hoverClassName}
                       activeLinkClassName={activeLinkClassName}
-                      buttonBorderColor={buttonBorderColor}
+                      dropdownBorderColor={dropdownBorderColor}
                     />
                   </Popover.Panel>
                 </Transition>

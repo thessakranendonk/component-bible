@@ -13,11 +13,11 @@ export interface IconHeaderProps {
   hoverClassName: string;
   activeLinkClassName: string;
   currentActiveLocation?: string;
-  buttonBgColor?: string;
-  buttonTextColor?: string;
-  buttonBorderColor?: string;
+  dropdownBgColor?: string;
+  dropdownTextColor?: string;
+  dropdownBorderColor?: string;
   textClassName?: string;
-  headerTitle?: string;
+  companyName?: string;
   logo?: string | undefined;
   logoClassName?: string;
   alt?: string;
