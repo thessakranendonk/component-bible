@@ -1,5 +1,7 @@
 // HEADERS AND NAV BAR
 
+import { LatLngExpression } from 'leaflet';
+
 export interface NavigationLink {
   name: string;
   href: string;
@@ -65,4 +67,48 @@ export interface AlertPopupProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   alertVisible: boolean;
   closeable?: boolean;
+}
+
+// MAP
+
+export interface MapProps {
+  company: string;
+  location: string;
+  lat: number;
+  lon: number;
+  description?: string;
+}
+
+export interface MapLocationDetails {
+  mapLocationDetails: MapProps[];
+  mapCenter: LatLngExpression;
+  zoomNumber: number;
+  mapClassName?: string;
+  mapSize: string;
+}
+
+export interface MapBusinessHoursProps {
+  day: string;
+  hours: string;
+}
+
+export interface MapContactProps {
+  address?: string;
+  email?: string;
+  phone?: string;
+}
+
+export interface MapContactInfo {
+  businessHours: MapBusinessHoursProps[];
+  mapContactInfo: MapContactProps;
+}
+
+export interface MapUiProps {
+  textClassName: string;
+  h2ClassName: string;
+  isMapInfoPanelOpen: boolean;
+  hoverClassName?: string;
+  panelButtonClassName?: string;
+  onMapOpen: () => void;
+  onMapClose: () => void;
 }
