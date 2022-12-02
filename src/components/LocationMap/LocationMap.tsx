@@ -1,5 +1,4 @@
 import { LatLngExpression } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import { MapContainer, Marker, TileLayer, Popup } from 'react-leaflet';
 import React from 'react';
 import { MapLocationDetails } from '../types/interfaces.types';
