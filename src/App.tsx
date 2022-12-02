@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
-import { HeroInfoBar, HeroOne, IconHeader, LocationMap, MapInfoSidePanel } from './components';
+import { HeroInfoBar, HeroOne, IconHeader, MapInfoSidePanel } from './components';
 import { PhoneIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import './index.css';
 // import { AlertPopup } from './components';
@@ -149,13 +149,13 @@ const App = () => {
             onMapClose={closeMapSidePanel}
           />
         </div>
-        <LocationMap
+        {/* <LocationMap
           mapLocationDetails={locationsList}
           mapCenter={[43.65102, -79.47588]}
           zoomNumber={16}
           mapClassName="absolute inset-x-center m-auto"
           mapSize="w-mapXL h-mapSidePanelXL"
-        />
+        /> */}
       </div>
     </div>
   );
