@@ -6,7 +6,10 @@ const HeroInfoBar: React.FC<HeroInfoBarProps> = ({ heroImageRowItemsClassName, h
   return (
     <div className="relative w-screen md:flex justify-between">
       {heroImageBarItems.map((item) => (
-        <div className={clsx('mx-auto w-full text-center py-4 md:py-6 lg:py-6 md:text-xl', heroImageRowItemsClassName)}>
+        <div
+          key={item}
+          className={clsx('mx-auto w-full text-center py-4 md:py-6 lg:py-6 md:text-xl', heroImageRowItemsClassName)}
+        >
           {item}
         </div>
       ))}
