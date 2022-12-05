@@ -79,6 +79,7 @@ export interface MapContactProps {
     address?: string;
     email?: string;
     phone?: string;
+    fax?: string;
 }
 export interface MapContactInfo {
     businessHours: MapBusinessHoursProps[];
@@ -92,4 +93,9 @@ export interface MapUiProps {
     panelButtonClassName?: string;
     onMapOpen: () => void;
     onMapClose: () => void;
+}
+export interface CarouselProps {
+    images: string[];
+    alt: string;
+    carouselClassName?: string;
 }
