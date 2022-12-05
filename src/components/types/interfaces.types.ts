@@ -96,6 +96,7 @@ export interface MapContactProps {
   address?: string;
   email?: string;
   phone?: string;
+  fax?: string;
 }
 
 export interface MapContactInfo {

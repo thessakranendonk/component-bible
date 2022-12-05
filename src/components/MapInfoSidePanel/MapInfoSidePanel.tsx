@@ -1,5 +1,5 @@
 import { Transition } from '@headlessui/react';
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline';
+import { EnvelopeIcon, MapPinIcon, PhoneIcon, PrinterIcon } from '@heroicons/react/24/outline';
 import { ChevronLeftIcon, ChevronRightIcon } from '@patternfly/react-icons';
 import clsx from 'clsx';
 import React from 'react';
@@ -36,18 +36,30 @@ const MapInfoSidePanel: React.FC<MapContactInfo & MapUiProps> = ({
             <div className="pt-12">
               <h2 className={clsx(' pb-8', h2ClassName)}>CONTACT US</h2>
               <div className={clsx('flex flex-col', textClassName)}>
-                <p className="text-md pb-3">
-                  <MapPinIcon className="inline-flex w-4 h-4 mr-3" />
-                  {mapContactInfo.address}
-                </p>
-                <a className={clsx('text-md pb-3', hoverClassName)} href={`mailto: ${mapContactInfo.email}`}>
-                  <EnvelopeIcon className="inline-flex w-4 h-4 mr-3" />
-                  {mapContactInfo.email}
-                </a>
-                <a href={`tel:${mapContactInfo.phone}`}>
-                  <PhoneIcon className="inline-flex w-4 h-4 mr-3" />
-                  {mapContactInfo.phone}
-                </a>
+                {mapContactInfo.address && (
+                  <p className="text-md pb-3">
+                    <MapPinIcon className="inline-flex w-4 h-4 mr-3" />
+                    {mapContactInfo.address}
+                  </p>
+                )}
+                {mapContactInfo.email && (
+                  <a className={clsx('text-md pb-3', hoverClassName)} href={`mailto: ${mapContactInfo.email}`}>
+                    <EnvelopeIcon className="inline-flex w-4 h-4 mr-3" />
+                    {mapContactInfo.email}
+                  </a>
+                )}
+                {mapContactInfo.phone && (
+                  <a href={`tel:${mapContactInfo.phone}`}>
+                    <PhoneIcon className="inline-flex w-4 h-4 mr-3" />
+                    {mapContactInfo.phone}
+                  </a>
+                )}
+                {mapContactInfo.fax && (
+                  <div className="pt-4">
+                    <PrinterIcon className="inline-flex w-4 h-4 mr-3" />
+                    {mapContactInfo.fax}
+                  </div>
+                )}
               </div>
             </div>
           </div>
