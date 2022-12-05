@@ -113,3 +113,11 @@ export interface MapUiProps {
   onMapOpen: () => void;
   onMapClose: () => void;
 }
+
+// UI COMPONENTS
+
+export interface CarouselProps {
+  images: string[];
+  alt: string;
+  carouselClassName?: string;
+}
