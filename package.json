@@ -1,6 +1,6 @@
 {
-  "name": "component-bible-library",
-  "version": "0.2.9",
+  "name": "techtessy",
+  "version": "0.0.1",
   "private": false,
   "dependencies": {
     "@headlessui/react": "^1.7.4",
@@ -84,10 +84,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thessakranendonk/component-bible-library.git"
+    "url": "git+https://github.com/thessakranendonk/techtessy.git"
   },
   "bugs": {
-    "url": "https://github.com/thessakranendonk/component-bible-library/issues"
+    "url": "https://github.com/thessakranendonk/techtessy/issues"
   },
-  "homepage": "https://github.com/thessakranendonk/component-bible-library"
+  "homepage": "https://github.com/thessakranendonk/techtessy"
 }
