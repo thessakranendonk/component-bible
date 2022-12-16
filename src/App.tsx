@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
-import { HeroInfoBar, HeroOne, IconHeader, MapInfoSidePanel } from './components';
+import { HeroInfoBar, HeroOne, IconHeader, MapInfoSidePanel, ArrowedCarousel, TabHeader } from './components';
 import { PhoneIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import './index.css';
 // import { AlertPopup } from './components';
@@ -65,9 +65,15 @@ const hours: Array<MapBusinessHoursProps> = [
 
 const contact: MapContactProps = {
   address: '263 Augusta Ave, Toronto',
-  email: 'runnymedemedical@runnymede.com',
   phone: '418-585-2154',
+  fax: 'dfsfsdsfsd',
 };
+
+const images = [
+  'https://www.runnymedewalkinmedical.com/s/cc_images/teaserbox_937720354.jpg?t=1583413808',
+  'https://www.runnymedewalkinmedical.com/s/cc_images/cache_957645592.jpg',
+  'https://www.runnymedewalkinmedical.com/s/cc_images/cache_957645591.jpg',
+];
 
 const App = () => {
   const [isSidePanelVisible, setIsSidePanelVisible] = useState(false);
@@ -117,6 +123,15 @@ const App = () => {
         onMenuClose={closeSidePanel}
         isPanelOpen={isSidePanelVisible}
       />
+      <TabHeader
+        navigationLinks={navigationLinks}
+        textColor="text-black"
+        textActiveColor="text-teal-500"
+        currentPath={location.pathname}
+        underlineFromColor="from-teal-500/0"
+        underlineViaColor="via-teal-500/40"
+        underlineToColor="to-teal-500/0"
+      />
       <HeroOne
         image="https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2874&q=80"
         location="Bloor West Village"
@@ -135,7 +150,9 @@ const App = () => {
         heroImageBarItems={heroImageBarItems}
       />
       <div className="py-24">hello</div>
-      {/* <div className="flex flex-row justify-center mx-auto bg-red-900 p-24 w-fit h-fit"> */}
+      <div>
+        <ArrowedCarousel images={images} carouselClassName="h-96 w-mapXL rounded-lg shadow-lg" alt="Our Clinic" />
+      </div>
       <div className="static flex mx-auto justify-center bg-red-900 w-mapXLBg h-fit p-8">
         <div className="flex justify-start w-full">
           <MapInfoSidePanel
