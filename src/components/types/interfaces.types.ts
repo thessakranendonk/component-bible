@@ -38,7 +38,7 @@ export interface TabHeaderProps {
   currentPath: string;
   textColor: string;
   textActiveColor: string;
-  tabDesignClassName: string;
+  tabDesignClassName?: string;
   underlineFromColor: string;
   underlineViaColor: string;
   underlineToColor: string;
