@@ -9,7 +9,7 @@ import { IconHeaderProps } from '../types/interfaces.types';
  * Header logo link pointing to the home ('/') route.
  */
 const LogoLink: React.FC<
-  Pick<IconHeaderProps, 'onLinkClick' | 'companyName' | 'logo' | 'alt'> & {
+  Pick<IconHeaderProps, 'onLinkClick' | 'companyName' | 'companyNameClassName' | 'logo' | 'alt'> & {
     logoClassName?: string;
     showSidePanel?: boolean;
   }
@@ -176,6 +176,7 @@ const IconHeader: React.FC<
   navigationLinks,
   iconNavBarItems,
   companyName,
+  companyNameClassName,
   headerBgColor,
   linkClassName,
   hoverClassName,
@@ -235,7 +236,7 @@ const IconHeader: React.FC<
                                 {logo ? (
                                   <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} />
                                 ) : (
-                                  <p>{companyName}</p>
+                                  <p className={companyNameClassName}>{companyName} hello</p>
                                 )}
                                 <div className="pt-10">
                                   <MenuLinks
@@ -259,7 +260,7 @@ const IconHeader: React.FC<
             {logo ? (
               <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} showSidePanel={isPanelOpen} />
             ) : (
-              <p>{companyName}</p>
+              <p className={companyNameClassName}>{companyName}</p>
             )}
           </div>
           <Popover className={clsx(headerBgColor, 'flex items-center justify-between')}>

@@ -28,6 +28,16 @@ export interface IconNavBarProps {
     title: string;
     undertext: string;
 }
+export interface TabHeaderProps {
+    navigationLinks: NavigationLink[];
+    currentPath: string;
+    textColor: string;
+    textActiveColor: string;
+    tabDesignClassName?: string;
+    underlineFromColor: string;
+    underlineViaColor: string;
+    underlineToColor: string;
+}
 export interface HeroOneProps {
     image?: string;
     alt?: string;

@@ -105,8 +105,9 @@ const App = () => {
       )}
     >
       <IconHeader
-        companyName="Hello"
-        logo={logo}
+        companyName="Daniel Medical Clinic"
+        companyNameClassName=""
+        logo=""
         navigationLinks={navigationLinks}
         iconNavBarItems={iconNavBarItems}
         headerBgColor="bg-white"
@@ -123,7 +124,7 @@ const App = () => {
         onMenuClose={closeSidePanel}
         isPanelOpen={isSidePanelVisible}
       />
-      <TabHeader
+      {/* <TabHeader
         navigationLinks={navigationLinks}
         textColor="text-black"
         textActiveColor="text-teal-500"
@@ -131,8 +132,8 @@ const App = () => {
         underlineFromColor="from-teal-500/0"
         underlineViaColor="via-teal-500/40"
         underlineToColor="to-teal-500/0"
-      />
-      <HeroOne
+      /> */}
+      {/* <HeroOne
         image="https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2874&q=80"
         location="Bloor West Village"
         locationClassName="text-xl lg:text-3xl font-semibold mb-4 font-serif"
@@ -143,17 +144,17 @@ const App = () => {
         contactButtonText="Call: 519-861-4813"
         contactButtonClassName="bg-red-900 text-white px-8 py-3 lg:py-4  mt-10 lg:mt-2 rounded-md font-serif"
         buttonLink="/"
-      />
-
+      /> */}
+      {/* 
       <HeroInfoBar
         heroImageRowItemsClassName="bg-red-900 text-white font-serif"
         heroImageBarItems={heroImageBarItems}
-      />
-      <div className="py-24">hello</div>
-      <div>
+      /> */}
+
+      {/* <div>
         <ArrowedCarousel images={images} carouselClassName="h-96 w-mapXL rounded-lg shadow-lg" alt="Our Clinic" />
-      </div>
-      <div className="static flex mx-auto justify-center bg-red-900 w-mapXLBg h-fit p-8">
+      </div> */}
+      {/* <div className="static flex mx-auto justify-center bg-red-900 w-mapXLBg h-fit p-8">
         <div className="flex justify-start w-full">
           <MapInfoSidePanel
             mapContactInfo={contact}
@@ -165,15 +166,15 @@ const App = () => {
             onMapOpen={openMapSidePanel}
             onMapClose={closeMapSidePanel}
           />
-        </div>
-        {/* <LocationMap
+        </div> */}
+      {/* <LocationMap
           mapLocationDetails={locationsList}
           mapCenter={[43.65102, -79.47588]}
           zoomNumber={16}
           mapClassName="absolute inset-x-center m-auto"
           mapSize="w-mapXL h-mapSidePanelXL"
         /> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 };

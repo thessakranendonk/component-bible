@@ -22,6 +22,51 @@ module.exports = {
     // sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
     // },
     extend: {
+      keyframes: {
+        sliding: {
+          '0%, 100%': { left: '-10px' },
+          '50%': { left: '10px' },
+        },
+        sliding2: {
+          '0%, 100%': { left: '-3px' },
+          '50%': { left: '8px' },
+        },
+        pulsing: {
+          '0%': {
+            'box-shadow': '0 0 0 0 rgb(0,139,139)',
+            'animation-timing-function': 'linear',
+          },
+          '40%': {
+            'box-shadow': '0 0 0 50px rgba(255, 26, 67, 0)',
+            'animation-timing-function': 'linear',
+          },
+          '80%': {
+            'box-shadow': '0 0 0 50px rgba(255, 206, 67, 0)',
+            'animation-timing-function': 'linear',
+          },
+          '100%': {
+            'box-shadow': '0 0 0 rgba(255, 206, 67, 0)',
+            'animation-timing-function': 'linear',
+          },
+        },
+        bouncing: {
+          '0%, 100%': {
+            transform: 'translateY(-25%)',
+            'animation-timing-function': 'linear',
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            'animation-timing-function': 'linear',
+          },
+        },
+      },
+      animation: {
+        spinSlow: 'spin 2s linear 1',
+        pulse: 'pulsing 2s linear infinite',
+        slide: 'sliding 2.5s ease-in-out infinite',
+        slide2: 'sliding2 2.5s ease-in-out infinite',
+        bouncing: 'bouncing 1s infinite',
+      },
       colors: {
         current: 'currentColor',
         primary: {
