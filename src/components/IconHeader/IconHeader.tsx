@@ -141,20 +141,22 @@ const MobileIconBar: React.FC<IconHeaderProps> = ({
 }) => {
   return (
     <div>
-      <Popover.Panel className={clsx('absolute right-0 top-20 z-10 w-fit -translate-x-3 transform', headerBgColor)}>
-        <ul className={clsx(dropdownBorderColor, 'border-2')}>
+      <Popover.Panel
+        className={clsx('absolute right-0 top-20 z-10 w-fit -translate-x-3 transform rounded-lg', headerBgColor)}
+      >
+        <ul className={clsx(dropdownBorderColor, 'border-2 rounded-lg')}>
           {iconNavBarItems?.map((item) => (
             <li key={item.iconLink} className="border-b-2 border-gray-200 last:border-0">
               <a
                 href={item.iconLink}
                 className={clsx(
-                  'flex pl-6 pr-20 py-5',
-                  'focus:outline-none focus-visible:ring focus-visible:ring-inset focus-visible:ring-black/20',
+                  'flex pl-6 pr-10 py-5',
+                  'flex focus:outline-none focus-visible:ring focus-visible:ring-inset focus-visible:ring-black/20',
                 )}
               >
-                <div className="w-14 h-14 mr-4">{item.icon}</div>
+                <div className="w-12 h-12 mr-4">{item.icon}</div>
                 <div className="flex flex-col">
-                  <p className={clsx('text-lg font-medium', textClassName)}>{item.title}</p>
+                  <p className={clsx('text-md font-medium', textClassName)}>{item.title}</p>
                   <p className={clsx('text-md text-gray-400', textClassName)}>{item.undertext}</p>
                 </div>
               </a>
@@ -262,8 +264,8 @@ const IconHeader: React.FC<
             {logo ? (
               <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} showSidePanel={isPanelOpen} />
             ) : (
-              <a href="/">
-                <p className={companyNameClassName}>{companyName}</p>
+              <a href="/" className={!isPanelOpen ? '' : 'transition-opacity duration-300 opacity-0'}>
+                <p className={(clsx(companyNameClassName), 'ml-8')}>{companyName}</p>
               </a>
             )}
           </div>

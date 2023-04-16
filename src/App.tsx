@@ -13,6 +13,7 @@ import {
   NavigationLink,
 } from './components/types/interfaces.types';
 import clsx from 'clsx';
+import LocationMap from './components/LocationMap';
 const logo = require('../src/assets/runnymede.png');
 
 const iconNavBarItems: Array<IconNavBarProps> = [
@@ -55,12 +56,12 @@ const locationsList: MapProps[] = [
 const heroImageBarItems: Array<string> = ['Pregnancy', 'Work Related Injuries', 'Vaccinations', 'On-site Pharmacy'];
 
 const hours: Array<MapBusinessHoursProps> = [
-  { day: 'Mon', hours: '8:00 AM - 7:00 PM' },
-  { day: 'Tue', hours: '8:00 AM - 7:00 PM' },
-  { day: 'Wed', hours: '8:00 AM - 5:00 PM' },
-  { day: 'Thu', hours: '8:00 AM - 5:00 PM' },
-  { day: 'Fri', hours: '8:00 AM - 5:00 PM' },
-  { day: 'Sat', hours: '8:00 AM - 5:00 PM' },
+  { day: 'Mon', hours: '10:00 AM - 4:00 PM' },
+  { day: 'Tue', hours: '10:00 AM - 4:00 PM' },
+  { day: 'Wed', hours: '10:00 AM - 4:00 PM' },
+  { day: 'Thu', hours: '10:00 AM - 4:00 PM' },
+  { day: 'Fri', hours: '10:00 AM - 4:00 PM' },
+  { day: 'Sat', hours: '10:00 AM - 1:00 PM' },
 ];
 
 const contact: MapContactProps = {
@@ -154,7 +155,7 @@ const App = () => {
       {/* <div>
         <ArrowedCarousel images={images} carouselClassName="h-96 w-mapXL rounded-lg shadow-lg" alt="Our Clinic" />
       </div> */}
-      {/* <div className="static flex mx-auto justify-center bg-red-900 w-mapXLBg h-fit p-8">
+      <div className="static flex mx-auto justify-center bg-red-900 w-mapXLBg h-fit p-8">
         <div className="flex justify-start w-full">
           <MapInfoSidePanel
             mapContactInfo={contact}
@@ -166,15 +167,15 @@ const App = () => {
             onMapOpen={openMapSidePanel}
             onMapClose={closeMapSidePanel}
           />
-        </div> */}
-      {/* <LocationMap
+        </div>
+        <LocationMap
           mapLocationDetails={locationsList}
           mapCenter={[43.65102, -79.47588]}
           zoomNumber={16}
           mapClassName="absolute inset-x-center m-auto"
           mapSize="w-mapXL h-mapSidePanelXL"
-        /> */}
-      {/* </div> */}
+        />
+      </div>
     </div>
   );
 };
