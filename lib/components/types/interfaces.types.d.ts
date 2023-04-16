@@ -17,6 +17,7 @@ export interface IconHeaderProps {
     dropdownBorderColor?: string;
     textClassName?: string;
     companyName?: string;
+    companyNameClassName?: string;
     logo?: string | undefined;
     logoClassName?: string;
     alt?: string;
