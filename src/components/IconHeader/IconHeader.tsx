@@ -265,7 +265,7 @@ const IconHeader: React.FC<
               <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} showSidePanel={isPanelOpen} />
             ) : (
               <a href="/" className={!isPanelOpen ? '' : 'transition-opacity duration-300 opacity-0'}>
-                <p className={(clsx(companyNameClassName), 'ml-8')}>{companyName}</p>
+                <p className={clsx(companyNameClassName, 'ml-8')}>{companyName}</p>
               </a>
             )}
           </div>
