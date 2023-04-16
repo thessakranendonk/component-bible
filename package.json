@@ -1,6 +1,6 @@
 {
   "name": "techtessy",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "private": false,
   "dependencies": {
     "@headlessui/react": "^1.7.4",
