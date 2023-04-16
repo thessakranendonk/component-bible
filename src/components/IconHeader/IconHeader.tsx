@@ -236,7 +236,9 @@ const IconHeader: React.FC<
                                 {logo ? (
                                   <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} />
                                 ) : (
-                                  <p className={companyNameClassName}>{companyName} hello</p>
+                                  <a href="/">
+                                    <p className={companyNameClassName}>{companyName}</p>
+                                  </a>
                                 )}
                                 <div className="pt-10">
                                   <MenuLinks
@@ -260,7 +262,9 @@ const IconHeader: React.FC<
             {logo ? (
               <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} showSidePanel={isPanelOpen} />
             ) : (
-              <p className={companyNameClassName}>{companyName}</p>
+              <a href="/">
+                <p className={companyNameClassName}>{companyName}</p>
+              </a>
             )}
           </div>
           <Popover className={clsx(headerBgColor, 'flex items-center justify-between')}>
