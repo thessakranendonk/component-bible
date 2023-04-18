@@ -95,7 +95,7 @@ const DesktopIconBar: React.FC<IconHeaderProps> = ({ companyName, iconNavBarItem
       <div className="flex">
         <div className="flex">
           {iconNavBarItems?.map((item) => (
-            <a key={item.iconLink} href={item.iconLink} className="flex">
+            <a key={item.title} href={item.iconLink} className="flex">
               <div className="w-14 h-14 ml-12 mr-3">{item.icon}</div>
               <div className="flex flex-col">
                 <p className={clsx('text-lg font-medium', textClassName)}>{item.title}</p>

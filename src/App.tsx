@@ -108,7 +108,7 @@ const App = () => {
       <IconHeader
         companyName="Daniel Medical Clinic"
         companyNameClassName=""
-        logo=""
+        logo={logo}
         navigationLinks={navigationLinks}
         iconNavBarItems={iconNavBarItems}
         headerBgColor="bg-white"
